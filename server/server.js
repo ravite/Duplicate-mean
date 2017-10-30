@@ -23,8 +23,8 @@ var app = express();
 //     }
 // }).unless({ path: ['/users/authenticate', '/users/register'] }));
 
-// // routes
-// app.use('/users', require('./controllers/users.controller'));
+ // routes
+app.use('/users', require('./controllers/users.controller'));
 
 // start server
 var port = process.env.NODE_ENV === 'production' ? 80 : 4000;
