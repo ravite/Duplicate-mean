@@ -1,7 +1,7 @@
 var config = require('config.json');
 var express = require('express');
 var router = express.Router();
-//var userService = require('services/user.service');
+var userService = require('services/user.service');
 
 // routes
 // router.post('/authenticate', authenticate);
@@ -40,14 +40,15 @@ module.exports = router;
 // }
 
 function getAll(req, res) {
-    // userService.getAll()
-    //     .then(function (users) {
-    //         res.send(users);
-    //     })
-    //     .catch(function (err) {
-    //         res.status(400).send(err);
-    //     });
-    console.log("get");
+    userService.getAll()
+        .then(function (users) {
+            res.send(users);
+            console.log("get");
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+    // console.log("get");
 }
 
 // function getCurrent(req, res) {
