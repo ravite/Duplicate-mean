@@ -26,4 +26,7 @@ export class UserService {
     delete(_id: string) {
         return this.http.delete('/users/' + _id);
     }
+    reset(user:any){
+    return this.http.put('/users/reset' , user);
+    }
 }
