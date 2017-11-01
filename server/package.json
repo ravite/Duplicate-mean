@@ -6,11 +6,17 @@
         "type": "git",
         "url": "https://github.com/cornflourblue/mean-angular2-registration-login-example.git"
     },
+    "keywords": [
+        "gmail",
+        "smpt",
+        "express",
+        "mailer",
+        "demo"
+    ],
     "dependencies": {
         "bcryptjs": "^2.1.0",
         "body-parser": "^1.13.2",
         "cors": "^2.8.1",
-        "express": "^4.13.0",
         "express-jwt": "^3.0.1",
         "jsonwebtoken": "^5.0.2",
         "lodash": "^3.10.0",
@@ -18,7 +24,10 @@
         "mongoskin": "^2.1.0",
         "q": "^1.4.1",
         "request": "^2.58.0",
-        "rootpath": "^0.1.2"
+        "rootpath": "^0.1.2",
+        "express": "^4.14.0",
+        "express-mailer": "^0.3.1",
+        "pug": "^2.0.0-beta6"
     },
     "license": "MIT"
 }

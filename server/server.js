@@ -5,6 +5,48 @@ var cors = require('cors');
  var bodyParser = require('body-parser');
  var expressJwt = require('express-jwt');
  var config = require('config.json');
+ const mailer = require('express-mailer'); // call express
+app.set('views', __dirname + '/views');
+// set the view engine to pug
+app.set('view engine', 'pug');
+
+// Configure express-mail and setup default mail data.
+mailer.extend(app, {
+  //from: 'info@arjunphp.com',
+  host: 'smtp.gmail.com', // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'ravitejagodavarthi@gmail.com', // gmail id
+    pass: '9705105735' // gmail password
+  }
+});
+
+
+// test route to trigger emails
+app.get('/', function (req, res) {
+  // Setup email data.
+  var mailOptions = {
+    to: 'ravitejagodavarthi@gmail.com',
+    subject: 'Email from SMTP sever',
+    user: { // data to view template
+      name: 'Hi',
+      message: 'How are u chandan'
+    }
+  }
+
+  // Send email.
+  app.mailer.send('email', mailOptions, function (err, message) {
+    if (err) {
+      console.log(err);
+      res.send('There was an error sending the email');
+      return;
+    }
+    return res.send('Email has been sent!');
+  });
+
+});
 
  app.use(cors());
  app.use(bodyParser.urlencoded({ extended: false }));
