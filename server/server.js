@@ -6,6 +6,26 @@ var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
 const mailer = require('express-mailer'); // call express
+
+
+
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: "27faaab3",
+  apiSecret: "23f881b85c70cfdf"
+});
+
+nexmo.message.sendSms(
+  919705105735, '918074758486', 'ravi', (err, responseData) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.dir(responseData);
+    }
+  }
+);
+
+
 app.set('views', __dirname + '/views');
 // set the view engine to pug
 app.set('view engine', 'pug');
@@ -19,7 +39,7 @@ mailer.extend(app, {
   transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
   auth: {
     user: 'ravitejagodavarthi@gmail.com', // gmail id
-    pass: '********' // gmail password
+    pass: 9705105735 // gmail password
   }
 });
 
